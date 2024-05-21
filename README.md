@@ -52,11 +52,11 @@ Exception 발생시 함께 전송하는 message를 html에 보내어 출력하�
 이 컨트롤러는 /error 경로에 매핑된다. 그리고 예외가 발생하면 이 경로에 대한 요청이 자동으로 생성된다.
 ErrorController를 구현하여 사용자정의의 ErrorController를 만들 수 있는데,
 이를 통해 경로 수정은 성공했지만 Exception의 Message를 가져오지 못 했다.
+-> Day 2 수업에서 처리 방법을 배워 Day 2 과제에서 예외처리를 해냈다!
 
 ##### issue 2
-처음에는 @ModelAttribute("student") 를 통하여 자동으로 @PathVariable("id") 값으로 student를 리턴
+처음에는 @ModelAttribute("student") 를 통하여 자동으로 @PathVariable("id") 값으로 student를 리턴했다.
+그러나 이후 학생 등록 로직에서 Get으로 새로운 id 값을 보내기 때문에 등록된 학생이 없다는 에러가 발생했다.
 
-##### issue 3
-Person 테이블에는 개인의 기본정보가 들어 있는데 부가정보인 생사 여부를 판단하는 aliveNo과 주소 식별 정보인 AddressId 도 포함하여 설계하였다.
-
-![스크린샷 2024-04-16 오전 9 03 28](https://github.com/lettuce82/nhnacademy/assets/152861713/df800c0d-2b54-4068-81e0-c040f6dcb00c)
+##### 경과
+@PathVariable("id) 값이 아닌 로그인시에 SESSION에 담았던 id 값으로 student를 리턴하도록 수정했다.
