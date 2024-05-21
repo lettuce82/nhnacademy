@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>학생 등록</title>
+</head>
+<body>
+    <div class="student-info">
+        <form method="post" action="/student/register">
+            <span th:text="#{id}"></span> <input type="text" name="id" th:value="${student != null ? student.id : ''}"/><br />
+            <span th:text="#{pwd}"></span> <input type="password" name="pwd" th:value="${student != null ? student.pwd : ''}"/><br />
+            <span th:text="#{name}"></span> <input type="text" name="name" th:value="${student != null ? student.name : ''}"/><br />
+            <span th:text="#{email}"></span> <input type="text" name="email" th:value="${student != null ? student.email : ''}"/><br />
+            <span th:text="#{score}"></span> <input type="number" name="score" th:value="${student != null ? student.score : ''}"/><br /></br>
+            <span th:text="#{rating}"></span> <textarea name="rating" rows="10" cols="80" th:text="${student != null ? student.rating : ''}" th:inline="text"></textarea><br />
+            <input type="submit" />
+        </form>
+        <div class="button-group">
+            <a href="/"><span th:text="#{goToHome}"></span></a>
+            <a href="?locale=ko">ko</a><br />
+            <a href="?locale=en">en</a><br />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginForm</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="student-info">
+    <form method="post" action="/">
+        <span th:text="#{id}"></span> <input type="text" name="id"/><br/><br/>
+        <span th:text="#{pwd}"></span> <input type="password" name="pwd"/><br/>
+        <br/>
+        [test ID: hong / PWD: 1234]
+        <br/>
+        <br/>
+        <input type="submit"/>
+    </form>
+    <div class="button-group">
+        <a href="?locale=ko">ko</a><br />
+        <a href="?locale=en">en</a><br />
+    </div>
+</div>
+</body>
+</html>

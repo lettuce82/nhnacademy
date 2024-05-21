@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>학생 수정</title>
+</head>
+<body>
+    <div class="student-info">
+        <form method="post" th:action="@{/student/{id}/modify(id=${student.id})}">
+            <span th:text="#{id}"></span> <input type="text" name="id" th:value="${student.id}" readonly/><br />
+            <span th:text="#{pwd}"></span> <input type="password" name="pwd" th:value="${student.pwd}"/><br />
+            <span th:text="#{name}"></span> <input type="text" name="name" th:value="${student.name}"/><br />
+            <span th:text="#{email}"></span> <input type="text" name="email" th:value="${student.email}"/><br />
+            <span th:text="#{score}"></span> <input type="number" name="score" th:value="${student.score}"/><br />
+            <span th:text="#{rating}"></span> <textarea name="rating" rows="10" cols="80" th:text="${student.rating}" th:inline="text"></textarea><br />
+            <input type="submit" />
+        </form>
+        <div class="button-group">
+            <a href="?locale=ko">ko</a><br />
+            <a href="?locale=en">en</a><br />
+        </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Error</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div class="student-info">
+            <h1><span th:text="#{error}"></span></h1>
+            <p><span th:text="${exception}"></span></p>
+            <a href="/"><span th:text="#{goToHome}"></span></a>
+        </div>
+    </div>
+</body>
+</html>

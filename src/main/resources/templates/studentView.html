@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>StudentView</title>
+</head>
+<body>
+<div class="student-info">
+    <span th:text="#{id}"></span> <span th:text="${student.id}"></span><br>
+    <span th:text="#{pwd}"></span> <span th:text="${student.pwd}"></span><br>
+    <span th:text="#{name}"></span> <span th:text="${student.name}"></span><br>
+    <span th:text="#{email}"></span> <span th:text="${student.email}"></span><br>
+    <span th:text="#{score}"></span> <span th:if="${isHide == null}" th:text="${student.score}"></span><br>
+    <span th:text="#{rating}"></span> <span th:if="${isHide == null}" th:text="${student.rating}"></span><br>
+
+    <div class="button-group">
+        <a th:href="@{/student/{id}/modify(id=${student.id})}"><span th:text="#{modify}"></span></a>
+        <a th:href="@{/student/{id}(id=${student.id},hideScore='yes')}"><span th:text="#{hideScore}"></span></a>
+        <a th:href="@{/student/{id}(id=${student.id})}"><span th:text="#{showScore}"></span></a>
+        <a href="/student/register"><span th:text="#{register}"></span></a>
+    </div>
+    <div class="button-group">
+        <a href="?locale=ko">ko</a>
+        <a href="?locale=en">en</a>
+    </div>
+
+</div>
+</body>
+</html>
