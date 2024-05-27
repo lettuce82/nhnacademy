@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Inquiry</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="#{customerInquiries}"></h1>
+
+    <form action="/cs/inquiry" th:object="${inquiry}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="title" th:text="#{title}"></label>
+            <input type="text" id="title" th:field="*{title}" required>
+        </div>
+
+        <div>
+            <label for="category" th:text="#{category}"></label>
+            <select id="category" th:field="*{category}">
+                <option th:each="category : ${T(com.nhnacademy.nhnmart.domain.Inquiry.InquiryCategory).values()}"
+                        th:value="${category}" th:text="${category}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="content" th:text="#{content}"></label>
+            <textarea id="content" required th:field="*{content}"></textarea>
+        </div>
+
+        <div>
+            <label for="attachedFiles" th:text="#{attachedFiles}"></label>
+            <input type="file" id="attachedFiles" name="attachedFiles" multiple accept="image/*">
+        </div>
+
+        <button type="submit" th:text="#{submit}"></button>
+        <a href="/cs" th:text="#{cancel}"></a>
+
+        <div class="language-switcher">
+            <a href="?locale=ko">ko</a>
+            <a href="?locale=en">en</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

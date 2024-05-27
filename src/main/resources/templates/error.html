@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Error</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+    <div class="container">
+        <div class="login-box">
+            <h1><span th:text="#{error}"></span></h1>
+            <p><span th:text="${exception}"></span></p>
+            <a href="/cs/login"><span th:text="#{goToHome}"></span></a>
+        </div>
+        <div class="language-switcher">
+            <a href="?locale=ko">ko</a>
+            <a href="?locale=en">en</a>
+        </div>
+    </div>
+</body>
+</html>

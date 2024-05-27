@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inquiry Detail</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <h1>Inquiry Detail</h1>
+    <h2>Customer Inquiry</h2>
+    <ul>
+        <li><strong th:text="#{title}"></strong> <span th:text="${inquiry.title}"></span></li>
+        <li><strong th:text="#{category}"></strong> <span th:text="${inquiry.category}"></span></li>
+        <li><strong th:text="#{content}"></strong> <span th:text="${inquiry.content}"></span></li>
+        <li><strong th:text="#{status}"></strong>
+            <span th:if="${hasAnswer}" style="color: green;" th:text="#{yesAnswered}"></span>
+            <span th:unless="${hasAnswer}" style="color: red;" th:text="#{NotAnswered}"></span>
+        </li>
+    </ul>
+
+    <h2 th:text="#{attachedFiles}"></h2>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <li th:each="file : ${attachedFiles}" class="swiper-slide" th:if="${file != null}">
+                <div class="image-container">
+                    <img th:src="@{/uploads/{filename}(filename=${file.name})}" alt="Attached Image">
+                    <div class="buttons">
+                        <a th:href="@{/uploads/{filename}(filename=${file.name})}" download th:attr="title='Download ' + ${file.name}">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a th:href="@{/uploads/{filename}(filename=${file.name})}" target="_blank" th:attr="title='View ' + ${file.name}">
+                            <i class="fas fa-search-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <h2 th:text="#{customerServiceResponse}"></h2>
+    <form action="/cs/admin/answer" method="post">
+        <input type="hidden" name="inquiryId" th:value="${inquiry.id}">
+        <div>
+            <label for="content" th:text="#{answerContent}"></label>
+            <textarea id="content" name="content"></textarea>
+        </div>
+        <button type="submit" th:text="#{submit}"></button>
+        <a href="/cs/admin" th:text="#{cancel}"></a>
+    </form>
+
+    <div class="language-switcher">
+        <a href="?locale=ko">ko</a>
+        <a href="?locale=en">en</a>
+    </div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    });
+</script>
+
+</body>
+</html>
